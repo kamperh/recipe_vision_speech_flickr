@@ -1,14 +1,6 @@
 Multimodal Modelling of Flickr Vision and Speech Data
 =====================================================
 
-Contributors
-------------
-- [Herman Kamper](http://www.kamperh.com/)
-- Shane Settle
-- [Karen Livescu](http://ttic.uchicago.edu/~klivescu/)
-- [Greg Shakhnarovich](http://ttic.uchicago.edu/~gregory/)
-
-
 Overview
 --------
 This is a recipe for grounding untranscribed speech using paired images.
@@ -43,3 +35,49 @@ image datasets gives paired images with spoken captions; we do not use the
 labels from either of these. The Flickr8k text corpus is purely for reference.
 The Flickr8k dataset can also be browsed directly
 [here](http://nlp.cs.illinois.edu/HockenmaierGroup/8k-pictures.html).
+
+
+Preliminaries
+-------------
+Install all the standalone dependencies (below). Then clone the required GitHub
+repositories into `../src/` as follows:
+
+    mkdir ../src/
+    git clone https://github.com/kamperh/tflego.git ../src/tflego/
+
+Download all the required datasets (above), and then update `paths.py` to point
+to the corresponding directories.
+
+
+Feature extraction
+------------------
+Extract filterbank and MFCC features by running the steps in
+[kaldi_features/readme.md](kaldi_features/readme.md).
+
+
+
+
+
+Dependencies
+------------
+
+Standalone packages:
+
+- [Python](https://www.python.org/)
+- [NumPy](http://www.numpy.org/) and [SciPy](http://www.scipy.org/).
+- [TensorFlow](https://www.tensorflow.org/): Required by the `tflego`
+  repository below.
+- [Kaldi](http://kaldi-asr.org/): Used for feature extraction.
+
+Repositories from GitHub:
+
+- [tflego](https://github.com/kamperh/tflego): A wrapper for building neural
+  networks. Should be cloned into the directory `../src/tflego/`.
+
+
+Contributors
+------------
+- [Herman Kamper](http://www.kamperh.com/)
+- Shane Settle
+- [Karen Livescu](http://ttic.uchicago.edu/~klivescu/)
+- [Greg Shakhnarovich](http://ttic.uchicago.edu/~gregory/)

@@ -4,6 +4,8 @@
 !*.py
 !*.pyx
 !*.md
+!*.sh
 !*.ipynb
 !Makefile
-examples/.ipynb_checkpoints/*
+!kaldi_features/steps
+!kaldi_features/utils
