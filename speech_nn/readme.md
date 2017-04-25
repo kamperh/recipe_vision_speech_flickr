@@ -147,3 +147,11 @@ To obtain and analyze the frame scores:
         models/train_visionsig_psyc/a4bc45a09c dev
 
 Then view these using the `analysis_sandbox.ipynb` IPython notebook.
+
+
+Keyword proposals
+-----------------
+Randomly sample a set of keywords:
+
+    ./keywords_propose_train.py
+

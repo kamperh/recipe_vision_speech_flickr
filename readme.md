@@ -72,7 +72,7 @@ Standalone packages:
 - [Python](https://www.python.org/)
 - [NumPy](http://www.numpy.org/) and [SciPy](http://www.scipy.org/).
 - [TensorFlow](https://www.tensorflow.org/): Required by the `tflego`
-  repository below.
+  repository below. I used TensorFlow v0.10.
 - [Kaldi](http://kaldi-asr.org/): Used for feature extraction.
 
 Repositories from GitHub:
