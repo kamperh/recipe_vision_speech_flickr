@@ -16,7 +16,7 @@ Extract filterbank features:
         data/full_vad exp/make_fbank/full_vad fbank
     cat fbank/raw_fbank_full_vad.*.scp > fbank/fbank_full_vad.scp
 
-The `nj` argument specifies the number of CPU cores to use.
+The `--nj` argument specifies the number of CPU cores to use.
 
 Extract MFCC features:
 

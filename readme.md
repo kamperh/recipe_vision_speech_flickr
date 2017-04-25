@@ -57,6 +57,9 @@ Extract filterbank and MFCC features by running the steps in
 
 Neural network training
 -----------------------
+Train the different vision neural network architectures by running the steps in
+[vision_nn/readme.md](vision_nn/readme.md).
+
 
 
 
