@@ -6,6 +6,7 @@
 !*.md
 !*.sh
 !*.ipynb
+!*.conf
 !Makefile
 !kaldi_features/steps
 !kaldi_features/utils
