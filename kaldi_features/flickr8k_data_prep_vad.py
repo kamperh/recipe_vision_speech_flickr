@@ -25,8 +25,8 @@ from paths import flickr_audio_dir
 
 data_dir = "data/full_vad"
 
+ctm_fn = path.join("..", "data", "flickr_8k.ctm")
 wav_dir = path.join(flickr_audio_dir, "wavs")
-ctm_fn = path.join(flickr_audio_dir, "flickr_8k.ctm")
 wav_to_spk_fn = path.join(flickr_audio_dir, "wav2spk.txt")
 
 
