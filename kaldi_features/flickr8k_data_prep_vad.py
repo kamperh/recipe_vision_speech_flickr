@@ -21,13 +21,13 @@ import sys
 
 sys.path.append("..")
 
-from paths import flickr_audio_dir
+from paths import flickr8k_audio_dir
 
 data_dir = "data/full_vad"
 
 ctm_fn = path.join("..", "data", "flickr_8k.ctm")
-wav_dir = path.join(flickr_audio_dir, "wavs")
-wav_to_spk_fn = path.join(flickr_audio_dir, "wav2spk.txt")
+wav_dir = path.join(flickr8k_audio_dir, "wavs")
+wav_to_spk_fn = path.join(flickr8k_audio_dir, "wav2spk.txt")
 
 
 def ctm_to_dict(ctm_fn):
