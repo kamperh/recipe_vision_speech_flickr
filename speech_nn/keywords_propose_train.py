@@ -56,6 +56,7 @@ def main():
     word_tokens = []
     for utt in sorted(label_dict_subset):
         word_tokens.extend(label_dict_subset[utt])
+    print "No. word tokens:", len(word_tokens)
 
     # Plot zipf
     counter = Counter(word_tokens)
@@ -92,19 +93,18 @@ def main():
 
     print "Filtering words according to count and POS"
     max_occur = 4000
-    min_occur = 200
+    min_occur = 300
     word_tokens_filtered = []
     for word in word_tokens:
         pos = nltk.tag.pos_tag([word])[0][1]
-        if min_occur < counter[word] < max_occur and pos not in ["IN"]:
+        if min_occur < counter[word] < max_occur and pos not in ["IN", "DT"]:
             word_tokens_filtered.append(word)
     print "No. word types:", len(set(word_tokens_filtered))
     word_tokens = word_tokens_filtered
 
     # Sample keywords
-    random.seed(2)
-    n_keywords = 60
-    keywords = []
+    random.seed(0)
+    n_keywords = 70
     keywords = sorted(random.sample(set(word_tokens), n_keywords))
     print
     print "Proposed keywords:"
@@ -118,7 +118,7 @@ def main():
         f.write("\n".join(keywords))
         f.write("\n")
 
-    # plt.show()
+    plt.show()
 
 
 if __name__ == "__main__":

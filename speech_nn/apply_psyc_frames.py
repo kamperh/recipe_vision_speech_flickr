@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-Apply a bag-of-words CNN to a set and output the sigmoids for each utterance.
+Apply a bag-of-words CNN with custom pooling and output sigmoids.
 
 Author: Herman Kamper
 Contact: kamperh@gmail.com
@@ -18,9 +18,9 @@ import tensorflow as tf
 
 sys.path.append(path.join("..", "..", "src", "tflego"))
 
-from tflego.blocks import TF_DTYPE
+from tflego.blocks import TF_DTYPE, TF_ITYPE
 import data_io
-import train_bow_cnn
+import train_psyc
 
 
 #-----------------------------------------------------------------------------#
@@ -34,7 +34,12 @@ def check_argv():
     parser.add_argument(
         "subset", type=str, help="subset to apply model to", choices=["train", "dev", "test"]
         )
-    parser.add_argument("--batch_size", type=int, help="batch size (default: %(default)s)", default=1)
+    parser.add_argument(
+        "--batch_size", type=int, help="if not provided, a single batch is used"
+        )
+    parser.add_argument(
+        "--n_batches", type=int, help="if provided, only this many batches is processed"
+        )
     if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(1)
@@ -45,22 +50,31 @@ def check_argv():
 #                             APPLY CNN FUNCTIONS                             #
 #-----------------------------------------------------------------------------#
 
-def build_model(x, options_dict):
-    if options_dict["script"] in ["train_bow_cnn", "train_visionspeech_cnn"]:
-        cnn = train_bow_cnn.build_bow_cnn_from_options_dict(x, 1.0, options_dict)
+def build_model(x, x_lengths, options_dict):
+    if options_dict["script"] in ["train_psyc", "train_visionspeech_psyc"]:
+        cnn, frame_scores = train_psyc.build_psyc_from_options_dict(
+            x, x_lengths, 1.0, options_dict
+            )
         cnn = tf.sigmoid(cnn)
-        return cnn
+        return cnn, frame_scores
     else:
         assert False
 
 
-def apply_model(model_dir, subset, batch_size=1, config=None):
+def apply_model(model_dir, subset, batch_size=None, n_batches=None, config=None):
 
     # Load the model options
     options_dict_fn = path.join(model_dir, "options_dict.pkl")
     print "Reading:", options_dict_fn
     with open(options_dict_fn, "rb") as f:
         options_dict = pickle.load(f)
+
+    # Load mapping dict
+    word_to_id_fn = path.join(model_dir, "word_to_id.pkl")
+    print "Reading:", word_to_id_fn
+    with open(word_to_id_fn, "rb") as f:
+        word_to_id = pickle.load(f)
+    id_to_word = dict([(i[1], i[0]) for i in word_to_id.iteritems()])
 
     # Load input data
     input_npz_fn = path.join(
@@ -71,30 +85,39 @@ def apply_model(model_dir, subset, batch_size=1, config=None):
     features_dict = np.load(input_npz_fn)
     utterances = sorted(features_dict.keys())
     input_x = [features_dict[i] for i in utterances]
-    padded_x, _ = data_io.pad_sequences(input_x, options_dict["n_padded"], options_dict["center_padded"])
+    padded_x, input_x_lengths = data_io.pad_sequences(
+        input_x, options_dict["n_padded"], options_dict["center_padded"]
+        )
     input_x = np.swapaxes(padded_x, 2, 1)
     print "Input items shape:", input_x.shape
     d_in = input_x.shape[1]*input_x.shape[2]
     input_x = input_x.reshape((-1, d_in))
 
     # Batch feed iterator
+    if batch_size is None:
+        batch_size = input_x.shape[0]
     print "Batch size:", batch_size
     class BatchFeedIterator(object):
-        def __init__(self, x_mat):
+        def __init__(self, x_mat, x_lengths):
             self._x_mat = x_mat
+            self._x_lengths = x_lengths
         def __iter__(self):
             n_batches = int(np.float(self._x_mat.shape[0] / batch_size))
             for i_batch in xrange(n_batches):
                 yield (
                     self._x_mat[
                         i_batch * batch_size:(i_batch + 1) * batch_size
+                        ],
+                    self._x_lengths[
+                        i_batch * batch_size:(i_batch + 1) * batch_size
                         ]
                     )
-    apply_batch_iterator = BatchFeedIterator(input_x)
+    apply_batch_iterator = BatchFeedIterator(input_x, input_x_lengths)
 
     # Build model
     x = tf.placeholder(TF_DTYPE, [None, options_dict["d_in"]])
-    cnn = build_model(x, options_dict)
+    x_lengths = tf.placeholder(TF_ITYPE, [None])
+    cnn, frame_scores = build_model(x, x_lengths, options_dict)
 
     print datetime.now()
 
@@ -108,19 +131,35 @@ def apply_model(model_dir, subset, batch_size=1, config=None):
         saver.restore(session, model_fn)
 
         # Apply model to batches
-        sigmoid_output_dict = {}
+        frame_scores_output_dict = {}
         n_outputs = 0
         print "Passing batches through model"
-        for cur_feed in apply_batch_iterator:
-            cur_output = session.run(cnn, feed_dict={x: cur_feed})
-            for i in xrange(cur_output.shape[0]):
-                sigmoid_output_dict[utterances.pop(0)] = cur_output[i, :]
+        for i_batch, cur_feed in enumerate(apply_batch_iterator):
+            cur_output, cur_frame_scores = session.run(
+                [cnn, frame_scores], feed_dict={x: cur_feed[0], x_lengths: cur_feed[1]}
+                )
+
+            # # print a
+            # print np.min(a), np.max(a)
+            # print a.shape
+            # print np.max(b, axis=1).shape
+            # print np.min(np.max(b, axis=1)), np.max(np.max(b, axis=1))
+            # # print tf.max(b,
+            # print a
+            # print np.max(b, axis=1)
+            # assert False
+
+            for i in xrange(cur_frame_scores.shape[0]):
+                frame_scores_output_dict[utterances.pop(0)] = cur_frame_scores[i, :]
                 n_outputs += 1
+
+            if n_batches is not None and i_batch == n_batches - 1:
+                break
         print "Processed {} inputs out of {}".format(n_outputs, input_x.shape[0])
 
     print datetime.now()
 
-    return sigmoid_output_dict
+    return frame_scores_output_dict
 
 
 #-----------------------------------------------------------------------------#
@@ -134,17 +173,21 @@ def main():
     import os
     if "OMP_NUM_THREADS" in os.environ:
         num_threads = int(os.environ["OMP_NUM_THREADS"])
-        config = tf.ConfigProto(intra_op_parallelism_threads=num_threads)
+        config = tf.ConfigProto(intra_op_parallelism_threads=num_threads) #, log_device_placement=True)
     else:
         config = None
 
-    sigmoid_output_dict = apply_model(
-        args.model_dir, args.subset, args.batch_size, config=config
+    frame_scores_output_dict = apply_model(
+        args.model_dir, args.subset, args.batch_size, n_batches=args.n_batches,
+        config=config,
         )
-    sigmoid_output_dict_fn = path.join(args.model_dir, "sigmoid_output_dict." + args.subset + ".pkl")
-    print "Writing:", sigmoid_output_dict_fn
-    with open(sigmoid_output_dict_fn, "wb") as f:
-        pickle.dump(sigmoid_output_dict, f, -1)
+    frame_scores_output_dict_fn = path.join(
+        args.model_dir, "frame_scores_output_dict." + args.subset + ".pkl"
+        )
+    print "Writing:", frame_scores_output_dict_fn
+    with open(frame_scores_output_dict_fn, "wb") as f:
+        pickle.dump(frame_scores_output_dict, f, -1)
+    print datetime.now()
 
 
 if __name__ == "__main__":

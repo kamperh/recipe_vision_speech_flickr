@@ -41,7 +41,7 @@ default_options_dict = {
     # "visionsig_npz": "../vision_nn/models/train_bow_mlp/4bc0d1875f/sigmoid_output_dict.flickr8k.npz",  # 3000 classes
     "visionsig_npz": "../vision_nn/models/train_bow_mlp/d64b725040/sigmoid_output_dict.flickr8k.npz",  # 1000 classes 
     "word_to_id_dict": "../vision_nn/data/flickr30k/word_to_id_content.pkl", 
-    "model_dir": "models/train_visionsig_psyc",
+    "model_dir": "models/train_visionspeech_psyc",
     "visionsig_threshold": None,  # if None, sigmoids are used as targets directly
     "n_padded": 800,
     "n_most_common": 1000,  # needs to be less than the dimensionality of the
@@ -81,7 +81,7 @@ default_options_dict = {
 #                              TRAINING FUNCTIONS                             #
 #-----------------------------------------------------------------------------#
 
-def train_visionsig_psyc(options_dict=None, config=None, model_dir=None, extrinsic_eval=False):
+def train_visionspeech_psyc(options_dict=None, config=None, model_dir=None, extrinsic_eval=False):
     """Train and save a PSyC CNN."""
 
     # PRELIMINARY
@@ -365,10 +365,10 @@ def main():
 
     # Set options
     options_dict = default_options_dict.copy()
-    options_dict["script"] = "train_visionsig_psyc"
+    options_dict["script"] = "train_visionspeech_psyc"
 
     # Train model
-    train_visionsig_psyc(options_dict, config, model_dir=args.model_dir, extrinsic_eval=args.extrinsic)
+    train_visionspeech_psyc(options_dict, config, model_dir=args.model_dir, extrinsic_eval=args.extrinsic)
 
 
 if __name__ == "__main__":

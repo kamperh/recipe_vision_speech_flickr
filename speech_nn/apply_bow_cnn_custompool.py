@@ -47,21 +47,21 @@ def check_argv():
 #-----------------------------------------------------------------------------#
 
 def build_model(x, x_lengths, options_dict):
-    if options_dict["script"] in ["train_bow_cnn_custompool", "train_visionsig_cnn_custompool"]:
+    if options_dict["script"] in ["train_bow_cnn_custompool", "train_visionspeech_cnn_custompool"]:
         cnn = train_bow_cnn_custompool.build_bow_cnn_custompool_from_options_dict(
             x, x_lengths, 1.0, options_dict
             )
         cnn = tf.sigmoid(cnn)
         return cnn
     # # Temp
-    # elif options_dict["script"] == "train_visionsig_cnn_custompool2":
-    #     import train_visionsig_cnn_custompool2
-    #     cnn = train_visionsig_cnn_custompool2.build_bow_cnn_custompool_from_options_dict(
+    # elif options_dict["script"] == "train_visionspeech_cnn_custompool2":
+    #     import train_visionspeech_cnn_custompool2
+    #     cnn = train_visionspeech_cnn_custompool2.build_bow_cnn_custompool_from_options_dict(
     #         x, x_lengths, 1.0, options_dict
     #         )
     #     cnn = tf.sigmoid(cnn)
     #     return cnn        
-    elif options_dict["script"] in ["train_psyc", "train_visionsig_psyc"]:
+    elif options_dict["script"] in ["train_psyc", "train_visionspeech_psyc"]:
         cnn, frame_scores = train_psyc.build_psyc_from_options_dict(
             x, x_lengths, 1.0, options_dict
             )
@@ -99,7 +99,7 @@ def apply_model(model_dir, subset, batch_size=1, config=None):
         input_x, options_dict["n_padded"], options_dict["center_padded"]
         )
     # # Temp
-    # from train_visionsig_cnn_custompool2 import pad_sequences
+    # from train_visionspeech_cnn_custompool2 import pad_sequences
     # padded_x, input_x_lengths = pad_sequences(
     #     input_x, options_dict["n_padded"], options_dict["center_padded"]
     #     )

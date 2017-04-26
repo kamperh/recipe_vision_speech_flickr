@@ -83,20 +83,26 @@ Train and evaluate a bag-of-words CNN with a PSyC architecture:
 
     ./train_psyc.py
     ./apply_bow_cnn_custompool.py --batch_size 259 \
-        models/train_psyc/907ae37ccc dev
-    ./eval_precision_recall.py models/train_psyc/907ae37ccc dev
-    ./apply_bow_cnn_custompool.py models/train_psyc/907ae37ccc test
-    ./eval_precision_recall.py models/train_psyc/907ae37ccc test
+        models/train_psyc/94a0a7228e dev
+    ./eval_precision_recall.py models/train_psyc/94a0a7228e dev
+    ./apply_bow_cnn_custompool.py models/train_psyc/94a0a7228e test
+    ./eval_precision_recall.py models/train_psyc/94a0a7228e test
 
 On the test set, this model achieves the following scores, as in Table 1 of
 [Kamper et al., 2017](https://arxiv.org/abs/1703.08136) under OracleSpeechPSC:
 
-    ...
+    Sigmoid threshold: 0.40
+    No. predictions: 23776
+    No. true tokens: 29617
+    Precision: 18136 / 23776 = 76.2786%
+    Recall: 18136 / 29617 = 61.2351%
+    F-score: 67.9340%
+    Average precision: 68.2631%
 
 To obtain and analyze the frame scores:
 
     ./apply_psyc_frames.py --n_batches 1 --batch_size 259 \
-        models/train_psyc/2f6c7d8856 dev
+        models/train_psyc/94a0a7228e dev
 
 Then view these using the `analysis_sandbox.ipynb` IPython notebook.
 
@@ -106,12 +112,12 @@ Visually grounded spoken bag-of-words CNN with max pooling
 Train and evaluate a visually grounded bag-of-words CNN:
 
     ./train_visionspeech_cnn.py
-    ./apply_bow_cnn.py models/train_visionsig_cnn/8e6c2607c2 dev
+    ./apply_bow_cnn.py models/train_visionspeech_cnn/ff99f1e5d2 dev
     ./eval_precision_recall.py \
         --analyze --plot --sigmoid_threshold 0.7 --analyze_confusions \
-        models/train_visionsig_cnn/8e6c2607c2 dev
-    ./apply_bow_cnn.py models/train_visionsig_cnn/8e6c2607c2 test
-    ./eval_precision_recall.py models/train_visionsig_cnn/8e6c2607c2 test
+        models/train_visionspeech_cnn/ff99f1e5d2 dev
+    ./apply_bow_cnn.py models/train_visionspeech_cnn/ff99f1e5d2 test
+    ./eval_precision_recall.py models/train_visionspeech_cnn/ff99f1e5d2 test
 
 On the test set, this model achieves the following scores, as in Table 1 of
 [Kamper et al., 2017](https://arxiv.org/abs/1703.08136) under OracleSpeechPSC:
@@ -126,9 +132,9 @@ layer:
 
     ./train_visionspeech_cnn_custompool.py
     ./apply_bow_cnn_custompool.py --batch_size 259 \
-        models/train_visionsig_cnn_custompool/de68e3cd67 dev
+        models/train_visionspeech_cnn_custompool/de68e3cd67 dev
     ./eval_precision_recall.py \
-        models/train_visionsig_cnn_custompool/de68e3cd67 dev
+        models/train_visionspeech_cnn_custompool/de68e3cd67 dev
 
 
 Visually grounded spoken bag-of-words CNN with PSyC architecture
@@ -136,15 +142,15 @@ Visually grounded spoken bag-of-words CNN with PSyC architecture
 Train and evaluate a visually grounded bag-of-words CNN with a PSyC
 architecture:
 
-    ./train_visionsig_psyc.py
+    ./train_visionspeech_psyc.py
     ./apply_bow_cnn_custompool.py --batch_size 259 \
-        models/train_visionsig_psyc/a4bc45a09c dev
-    ./eval_precision_recall.py models/train_visionsig_psyc/a4bc45a09c dev
+        models/train_visionspeech_psyc/a4bc45a09c dev
+    ./eval_precision_recall.py models/train_visionspeech_psyc/a4bc45a09c dev
 
 To obtain and analyze the frame scores:
 
     ./apply_psyc_frames.py --n_batches 1 --batch_size 259 \
-        models/train_visionsig_psyc/a4bc45a09c dev
+        models/train_visionspeech_psyc/a4bc45a09c dev
 
 Then view these using the `analysis_sandbox.ipynb` IPython notebook.
 
@@ -155,3 +161,6 @@ Randomly sample a set of keywords:
 
     ./keywords_propose_train.py
 
+To look at the overlap of the proposed keyword list with a particular set, run:
+
+    ./keywords_in_set.py data/keywords.txt dev

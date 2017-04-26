@@ -37,8 +37,8 @@ The Flickr8k dataset can also be browsed directly
 [here](http://nlp.cs.illinois.edu/HockenmaierGroup/8k-pictures.html).
 
 
-Preliminaries
--------------
+Preliminary
+-----------
 Install all the standalone dependencies (below). Then clone the required GitHub
 repositories into `../src/` as follows:
 
