@@ -112,17 +112,23 @@ Visually grounded spoken bag-of-words CNN with max pooling
 Train and evaluate a visually grounded bag-of-words CNN:
 
     ./train_visionspeech_cnn.py
-    ./apply_bow_cnn.py models/train_visionspeech_cnn/ff99f1e5d2 dev
+    ./apply_bow_cnn.py models/train_visionspeech_cnn/e6dcda4ad4 dev
     ./eval_precision_recall.py \
         --analyze --plot --sigmoid_threshold 0.7 --analyze_confusions \
-        models/train_visionspeech_cnn/ff99f1e5d2 dev
-    ./apply_bow_cnn.py models/train_visionspeech_cnn/ff99f1e5d2 test
-    ./eval_precision_recall.py models/train_visionspeech_cnn/ff99f1e5d2 test
+        models/train_visionspeech_cnn/e6dcda4ad4 dev
+    ./apply_bow_cnn.py models/train_visionspeech_cnn/e6dcda4ad4 test
+    ./eval_precision_recall.py models/train_visionspeech_cnn/e6dcda4ad4 test
 
 On the test set, this model achieves the following scores, as in Table 1 of
 [Kamper et al., 2017](https://arxiv.org/abs/1703.08136) under OracleSpeechPSC:
 
-    ...
+    Sigmoid threshold: 0.40
+    No. predictions: 19446
+    No. true tokens: 29617
+    Precision: 7236 / 19446 = 37.2107%
+    Recall: 7236 / 29617 = 24.4319%
+    F-score: 29.4968%
+    Average precision: 21.7135%
 
 
 Visually grounded spoken bag-of-words CNN with mean pool over output
@@ -132,9 +138,9 @@ layer:
 
     ./train_visionspeech_cnn_custompool.py
     ./apply_bow_cnn_custompool.py --batch_size 259 \
-        models/train_visionspeech_cnn_custompool/de68e3cd67 dev
+        models/train_visionspeech_cnn_custompool/59e494dba3 dev
     ./eval_precision_recall.py \
-        models/train_visionspeech_cnn_custompool/de68e3cd67 dev
+        models/train_visionspeech_cnn_custompool/59e494dba3 dev
 
 
 Visually grounded spoken bag-of-words CNN with PSyC architecture
@@ -144,13 +150,13 @@ architecture:
 
     ./train_visionspeech_psyc.py
     ./apply_bow_cnn_custompool.py --batch_size 259 \
-        models/train_visionspeech_psyc/a4bc45a09c dev
-    ./eval_precision_recall.py models/train_visionspeech_psyc/a4bc45a09c dev
+        models/train_visionspeech_psyc/bf4a037b1c dev
+    ./eval_precision_recall.py models/train_visionspeech_psyc/bf4a037b1c dev
 
 To obtain and analyze the frame scores:
 
     ./apply_psyc_frames.py --n_batches 1 --batch_size 259 \
-        models/train_visionspeech_psyc/a4bc45a09c dev
+        models/train_visionspeech_psyc/bf4a037b1c dev
 
 Then view these using the `analysis_sandbox.ipynb` IPython notebook.
 
