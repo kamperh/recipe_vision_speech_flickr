@@ -54,12 +54,12 @@ Train and evaluate a bag-of-words MLP on Flickr30k VGG16 features:
 This should give approximately the following scores:
 
     Sigmoid threshold: 0.40
-    No. predictions: 6726
+    No. predictions: 6839
     No. true tokens: 23428
-    Precision: 3373 / 6726 = 50.1487%
-    Recall: 3373 / 23428 = 14.3973%
-    F-score: 22.3718%
-    Average precision: 22.8551%
+    Precision: 3359 / 6839 = 49.1154%
+    Recall: 3359 / 23428 = 14.3375%
+    F-score: 22.1958%
+    Average precision: 22.3763%
 
 This is the model that will be used for visual processing in the experiments
 for grounding speech, so the model directory should be noted. In my case, the
@@ -72,14 +72,14 @@ experiments. No training occurs. To apply the model to Flickr8k, and inspect
 predictions, run:
 
     ./apply_bow_mlp.py --batch_size 93 models/train_bow_mlp/d64b725040 flickr8k
-    ./show_predictions.py --sigmoid_threshold 0.7 \
+    ./show_predictions.py --sigmoid_threshold 0.6 \
         models/train_bow_mlp/d64b725040/sigmoid_output_dict.flickr8k.npz \
         data/flickr30k/word_to_id_content.pkl
 
 This shows some of the system outputs, e.g.:
 
-    Image: 1007320043_627395c3d8
-    Predicted: ['young', 'red', 'child', 'little', 'climbing', 'playground']
+    Image: 99171998_7cc800ceef
+    Predicted: ['people', 'group', 'snow', 'mountain', 'snowy', 'skiing']
 
 The complte output (used in the subsequent grounding experiments) is saved as:
 

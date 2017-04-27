@@ -86,7 +86,7 @@ def load_flickr30k_bow_labelled(data_dir, subset, label_dict, n_bow,
         number of captions; "top_k" keeps only the top k most common words.
     """
 
-    assert subset in ["train", "dev", "test"]
+    assert subset in ["train_no8ktrain", "dev", "test"]
 
     # Load data and shuffle
     npz_fn = path.join(data_dir, "fc7.npz")
@@ -271,7 +271,7 @@ def train_bow_mlp(options_dict=None, config=None, model_dir=None):
 
     # Load image data
     train_x, train_y_bow = load_flickr30k_bow_labelled(
-        options_dict["data_dir"], "train", label_dict,
+        options_dict["data_dir"], "train_no8ktrain", label_dict,
         options_dict["n_most_common"], bow_type=options_dict["train_bow_type"]
         )
     dev_x, dev_y_bow = load_flickr30k_bow_labelled(
