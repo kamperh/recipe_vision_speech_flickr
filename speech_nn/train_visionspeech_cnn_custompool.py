@@ -113,9 +113,10 @@ def train_visionspeech_cnn_custompool(options_dict=None, config=None, model_dir=
         os.makedirs(model_dir)
     print "Options:", options_dict
 
-    # Model filename
+    # Model filenames
     n_epochs_post_complete = epoch_offset + options_dict["n_max_epochs"]
     model_fn = path.join(model_dir, "model.n_epochs_{}.ckpt".format(n_epochs_post_complete))
+    best_model_fn = path.join(model_dir, "model.best_val.ckpt")
 
     # Random seeds
     random.seed(options_dict["rnd_seed"])
@@ -261,9 +262,10 @@ def train_visionspeech_cnn_custompool(options_dict=None, config=None, model_dir=
     print "Training CNN"
     record_dict = training.train_fixed_epochs(
         options_dict["n_max_epochs"], optimizer, loss, train_batch_iterator,
-        [x, x_lengths, y, keep_prob], [loss, precision, recall, fscore],
+        [x, x_lengths, y, keep_prob], [loss, precision, recall, -fscore],
         val_batch_iterator, load_model_fn=load_model_fn,
-        save_model_fn=model_fn, config=config, epoch_offset=epoch_offset
+        save_model_fn=model_fn, config=config, epoch_offset=epoch_offset,
+        save_best_val_model_fn=best_model_fn
         )
 
     # Save record

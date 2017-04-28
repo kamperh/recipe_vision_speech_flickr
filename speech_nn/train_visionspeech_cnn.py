@@ -47,8 +47,8 @@ default_options_dict = {
     "n_most_common": 1000,  # needs to be less than the dimensionality of the
                             # vision sigmoids; if None, then the full vision
                             # dimensionality is used
-    "n_max_epochs": 25,
-    "batch_size": 128, # 128,
+    "n_max_epochs": 15,
+    "batch_size": 64, # 128,
     "ff_keep_prob": 1.0,
     "center_padded": True,
     # "optimizer": {
@@ -71,7 +71,7 @@ default_options_dict = {
         [1, 75]
     ],
     "detect_sigmoid_threshold": 0.4,
-    "n_hiddens": [2048],
+    "n_hiddens": [4096],
     "rnd_seed": 42,
     }
 
@@ -113,9 +113,10 @@ def train_visionspeech_cnn(options_dict=None, config=None, model_dir=None, extri
         os.makedirs(model_dir)
     print "Options:", options_dict
 
-    # Model filename
+    # Model filenames
     n_epochs_post_complete = epoch_offset + options_dict["n_max_epochs"]
     model_fn = path.join(model_dir, "model.n_epochs_{}.ckpt".format(n_epochs_post_complete))
+    best_model_fn = path.join(model_dir, "model.best_val.ckpt")
 
     # Random seeds
     random.seed(options_dict["rnd_seed"])
@@ -250,13 +251,21 @@ def train_visionspeech_cnn(options_dict=None, config=None, model_dir=None, extri
 
     # TRAIN MODEL
 
+    # Save options_dict
+    options_dict["n_epochs_complete"] = n_epochs_post_complete
+    # options_dict_fn = path.join(model_dir, "options_dict.pkl")
+    print("Writing: " + options_dict_fn)
+    with open(options_dict_fn, "wb") as f:
+        pickle.dump(options_dict, f, -1)
+
     print(datetime.now())
     print "Training CNN"
     record_dict = training.train_fixed_epochs(
         options_dict["n_max_epochs"], optimizer, loss, train_batch_iterator,
-        [x, y, keep_prob], [loss, precision, recall, fscore],
+        [x, y, keep_prob], [loss, precision, recall, -fscore],
         val_batch_iterator, load_model_fn=load_model_fn,
-        save_model_fn=model_fn, config=config, epoch_offset=epoch_offset
+        save_model_fn=model_fn, config=config, epoch_offset=epoch_offset,
+        save_best_val_model_fn=best_model_fn
         )
 
     # Save record
@@ -264,13 +273,6 @@ def train_visionspeech_cnn(options_dict=None, config=None, model_dir=None, extri
     print "Writing:", record_dict_fn
     with open(record_dict_fn, "wb") as f:
         pickle.dump(record_dict, f, -1)
-
-    # Save options_dict
-    options_dict["n_epochs_complete"] = n_epochs_post_complete
-    # options_dict_fn = path.join(model_dir, "options_dict.pkl")
-    print("Writing: " + options_dict_fn)
-    with open(options_dict_fn, "wb") as f:
-        pickle.dump(options_dict, f, -1)
 
     print datetime.now()
 

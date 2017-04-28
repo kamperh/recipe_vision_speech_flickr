@@ -103,7 +103,11 @@ def apply_model(model_dir, subset, batch_size=1, config=None):
     with tf.Session(config=config) as session:
 
         # Load model
-        model_fn = path.join(model_dir, "model.n_epochs_{}.ckpt".format(options_dict["n_epochs_complete"]))
+        model_fn = path.join(model_dir, "model.best_val.ckpt")
+        if not path.isfile(model_fn):
+            model_fn = path.join(
+                model_dir, "model.n_epochs_{}.ckpt".format(options_dict["n_epochs_complete"])
+                )
         print "Reading:", model_fn
         saver.restore(session, model_fn)
 
