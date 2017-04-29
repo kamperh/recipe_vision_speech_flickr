@@ -47,7 +47,7 @@ def main():
     if not path.isdir(output_dir):
         os.mkdir(output_dir)
 
-    word_to_id_dict_fn = "../vision_nn/data/flickr30k/word_to_id_content.pkl"
+    word_to_id_dict_fn = "../vision_nn_flickr30k/data/flickr30k/word_to_id_content.pkl"
     print "Reading:", word_to_id_dict_fn
     with open(word_to_id_dict_fn, "rb") as f:
         word_to_id = pickle.load(f)
