@@ -38,66 +38,8 @@ import data_io
 default_options_dict = {
     "speech_data_dir": "data/mfcc_cmvn_dd_vad", # "data/fbank_vad", # 
     "speech_label_dict": "data/captions_content_dict.pkl", 
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/4611301850/sigmoid_output_dict.flickr8k.npz",
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/09a7d2e960/sigmoid_output_dict.flickr8k.npz",  # NO 4096x3, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/e1e1756807/sigmoid_output_dict.flickr8k.npz",  # NO, 512x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/cf6361aae7/sigmoid_output_dict.flickr8k.npz",  # NO, 1024x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/e07efd85dd/sigmoid_output_dict.flickr8k.npz",  # NO, 4096x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/5cc06c8dde/sigmoid_output_dict.flickr8k.npz",  # NO, 1024x5, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/e972c0abb1/sigmoid_output_dict.flickr8k.npz",  # NO, 1536x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/c539792f30/sigmoid_output_dict.flickr8k.npz",  # NO, 2048x5, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/e1bb97fae9/sigmoid_output_dict.flickr8k.npz",  # NO 25 iter, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/d33698a0b9/sigmoid_output_dict.flickr8k.npz",  # NO, lr 0.001, 75 iter, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/065198a8a7/sigmoid_output_dict.flickr8k.npz",  # NO, lr 0.0005, 75 iter, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/7be26bf5c5/sigmoid_output_dict.flickr8k.npz",  # NO, 100 iter, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/e0400964e7/sigmoid_output_dict.flickr8k.npz",  # NO, dropout 1, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/f07fd8ceb3/sigmoid_output_dict.flickr8k.npz",  # NO, dropout 0.5, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/bbe8a31f0a/sigmoid_output_dict.flickr8k.npz",  # NO, 2048x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/068cefe7b1/sigmoid_output_dict.flickr8k.npz",  # NO, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/bc22ca83c9/sigmoid_output_dict.flickr8k.npz",  # *** 75 iter, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/67b0a15ac9/sigmoid_output_dict.flickr8k.npz",  # NO, drop 0.7, 75 iter, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/195d6966ad/sigmoid_output_dict.flickr8k.npz",  # NO, drop 0.65, 75 iter, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/4059cbb06a/sigmoid_output_dict.flickr8k.npz",  # NO, drop 0.8, 75 iter, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/f232ded8c2/sigmoid_output_dict.flickr8k.npz",  # NO, batch 32, 75 iter, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/867377301e/sigmoid_output_dict.flickr8k.npz",  # ** batch 128, drop 0.7, 75 iter, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/d35f8569fd/sigmoid_output_dict.flickr8k.npz",  # NO, batch 128, drop 0.75, 75 iter, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/d3423f2a03/sigmoid_output_dict.flickr8k.npz",  # NO, batch 200, drop 0.75, 75 iter, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/ef0ad5933d/sigmoid_output_dict.flickr8k.npz",  # NO, 1500 words, 75 iter, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/3198d91ec5/sigmoid_output_dict.flickr8k.npz",  # NO, 2000 words, 75 iter, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/8d9a03e4e1/sigmoid_output_dict.flickr8k.npz",  # NO, 3000 words, 75 iter, 3072x4, all_no8k
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/07b09c5fc2/sigmoid_output_dict.flickr8k.npz",  # [], 75 iter, 2048x4, all_no8ktraintest
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/dea2850778/sigmoid_output_dict.flickr8k.npz",  # *** 75 iter, 3072x4, all_no8ktraintest
-    # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/79c40eabb2/sigmoid_output_dict.flickr8k.npz",  # [], 75 iter, 4096x4, all_no8ktraintest
+    "visionsig_npz":
+        "../vision_nn_flickr30k/models/train_bow_mlp/dea2850778/sigmoid_output_dict.flickr8k.npz",
     "word_to_id_dict": "../vision_nn_flickr30k/data/flickr30k/word_to_id_content.pkl", 
     "model_dir": "models/train_visionspeech_cnn",
     "visionsig_threshold": None,  # if None, sigmoids are used as targets directly
@@ -105,8 +47,8 @@ default_options_dict = {
                             # vision sigmoids; if None, then the full vision
                             # dimensionality is used
     "n_max_epochs": 15,
-    "batch_size": 16, # [NO] 32, [*] 16, [NO] 8
-    "ff_keep_prob": 1.0,  # [*] drop 0.9, [NO] drop 0.8
+    "batch_size": 16,
+    "ff_keep_prob": 1.0,
     "center_padded": True,
     # "optimizer": {
     #     "type": "sgd",
@@ -114,13 +56,13 @@ default_options_dict = {
     # },
     "optimizer": {
         "type": "adam",
-        "learning_rate": 0.0001,  # [NO] 0.0005, [NO] 0.001
+        "learning_rate": 0.0001,
     },
-    "n_padded": 800,  # [NO] 600, [NO] 1000
+    "n_padded": 800,
     "filter_shapes": [
-        [39, 9, 1, 64],     # [] [39, 9, 1, 64]
-        [1, 10, 64, 256],   # [] [1, 10, 64, 256]
-        [1, 11, 256, 1024]  # [] [1, 11, 256, 1024]
+        [39, 9, 1, 64],
+        [1, 10, 64, 256],
+        [1, 11, 256, 1024]
     ],
     "pool_shapes": [
         [1, 3],
@@ -128,47 +70,9 @@ default_options_dict = {
         [1, 75]
     ],
     "detect_sigmoid_threshold": 0.4,
-    "n_hiddens": [4096],  # or 4096
+    "n_hiddens": [4096],
     "rnd_seed": 42,
     }
-# default_options_dict = {
-#     "speech_data_dir": "data/mfcc_cmvn_dd_vad", # "data/fbank_vad", # 
-#     "speech_label_dict": "data/captions_content_dict.pkl", 
-#     "visionsig_npz":
-#         "../vision_nn_flickr30k/models/train_bow_mlp/4611301850/sigmoid_output_dict.flickr8k.npz",
-#     "word_to_id_dict": "../vision_nn_flickr30k/data/flickr30k/word_to_id_content.pkl", 
-#     "model_dir": "models/train_visionspeech_cnn",
-#     "visionsig_threshold": None,  # if None, sigmoids are used as targets directly
-#     "n_most_common": 1000,  # needs to be less than the dimensionality of the
-#                             # vision sigmoids; if None, then the full vision
-#                             # dimensionality is used
-#     "n_max_epochs": 25,
-#     "batch_size": 32, # 128,
-#     "ff_keep_prob": 1.0,
-#     "center_padded": True,
-#     # "optimizer": {
-#     #     "type": "sgd",
-#     #     "learning_rate": 0.1
-#     # },
-#     "optimizer": {
-#         "type": "adam",
-#         "learning_rate": 0.0001
-#     },
-#     "n_padded": 800,
-#     "filter_shapes": [
-#         [39, 9, 1, 64],
-#         [1, 10, 64, 256],
-#         [1, 11, 256, 1024]
-#     ],
-#     "pool_shapes": [
-#         [1, 3],
-#         [1, 3],
-#         [1, 75]
-#     ],
-#     "detect_sigmoid_threshold": 0.4,
-#     "n_hiddens": [4096],
-#     "rnd_seed": 42,
-#     }
 
 
 #-----------------------------------------------------------------------------#

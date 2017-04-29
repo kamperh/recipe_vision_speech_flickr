@@ -34,18 +34,18 @@ default_options_dict = {
     "data_dir": "data/flickr30k", # "data/temp", # 
     "label_dict": "captions_word_ids_content_dict.pkl", # "captions_word_ids_dict.pkl", # 
     "model_dir": "models/train_bow_mlp",
-    "n_max_epochs": 75,  # 75
-    "batch_size": 64,  # 64
-    "ff_keep_prob": 0.75,  # 0.75
-    "n_most_common": 1000,  # 1000
-    "n_hiddens": [3072, 3072, 3072, 3072],
+    "n_max_epochs": 75,
+    "batch_size": 64,
+    "ff_keep_prob": 0.75,
+    "n_most_common": 1000,
+    "n_hiddens": [3000, 3000, 3000, 3000],  # [3072, 3072, 3072, 3072],
     # "optimizer": {
     #     "type": "sgd",
     #     "learning_rate": 0.001
     # },
     "optimizer": {
         "type": "adam",
-        "learning_rate": 0.0001  # 0.0001
+        "learning_rate": 0.0001
     },
     "detect_sigmoid_threshold": 0.5,
     "train_bow_type": "single",  # "single", "average", "top_k"
