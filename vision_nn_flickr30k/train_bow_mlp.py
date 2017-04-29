@@ -50,7 +50,7 @@ default_options_dict = {
     "detect_sigmoid_threshold": 0.5,
     "train_bow_type": "single",  # "single", "average", "top_k"
     "rnd_seed": 2,
-    "train_tag": "all_no8ktraintest",  # "train", "train_no8ktrain", "all_no8k"
+    "train_tag": "all_no8ktraintest",  # "train", "all_no8ktraintest"
     }
 
 
@@ -87,7 +87,7 @@ def load_flickr30k_bow_labelled(data_dir, subset, label_dict, n_bow,
         number of captions; "top_k" keeps only the top k most common words.
     """
 
-    assert subset in ["train_no8ktrain", "all_no8k", "all_no8ktraintest", "dev", "test"]
+    assert subset in ["train", "all_no8ktraintest", "dev", "test"]
 
     # Load data and shuffle
     npz_fn = path.join(data_dir, "fc7.npz")

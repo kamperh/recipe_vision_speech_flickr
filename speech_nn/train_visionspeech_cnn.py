@@ -70,8 +70,8 @@ default_options_dict = {
     #     "../vision_nn_flickr30k/models/train_bow_mlp/bbe8a31f0a/sigmoid_output_dict.flickr8k.npz",  # NO, 2048x4, all_no8k
     # "visionsig_npz":
     #     "../vision_nn_flickr30k/models/train_bow_mlp/068cefe7b1/sigmoid_output_dict.flickr8k.npz",  # NO, 3072x4, all_no8k
-    "visionsig_npz":
-        "../vision_nn_flickr30k/models/train_bow_mlp/bc22ca83c9/sigmoid_output_dict.flickr8k.npz",  # *** 75 iter, 3072x4, all_no8k
+    # "visionsig_npz":
+    #     "../vision_nn_flickr30k/models/train_bow_mlp/bc22ca83c9/sigmoid_output_dict.flickr8k.npz",  # *** 75 iter, 3072x4, all_no8k
     # "visionsig_npz":
     #     "../vision_nn_flickr30k/models/train_bow_mlp/67b0a15ac9/sigmoid_output_dict.flickr8k.npz",  # NO, drop 0.7, 75 iter, 3072x4, all_no8k
     # "visionsig_npz":
@@ -95,9 +95,9 @@ default_options_dict = {
     # "visionsig_npz":
     #     "../vision_nn_flickr30k/models/train_bow_mlp/07b09c5fc2/sigmoid_output_dict.flickr8k.npz",  # [], 75 iter, 2048x4, all_no8ktraintest
     # "visionsig_npz":
-    #     "../vision_nn_flickr30k/models/train_bow_mlp/dea2850778/sigmoid_output_dict.flickr8k.npz",  # [], 75 iter, 3072x4, all_no8ktraintest
-    "visionsig_npz":
-        "../vision_nn_flickr30k/models/train_bow_mlp/79c40eabb2/sigmoid_output_dict.flickr8k.npz",  # [], 75 iter, 4096x4, all_no8ktraintest
+    #     "../vision_nn_flickr30k/models/train_bow_mlp/dea2850778/sigmoid_output_dict.flickr8k.npz",  # *** 75 iter, 3072x4, all_no8ktraintest
+    # "visionsig_npz":
+    #     "../vision_nn_flickr30k/models/train_bow_mlp/79c40eabb2/sigmoid_output_dict.flickr8k.npz",  # [], 75 iter, 4096x4, all_no8ktraintest
     "word_to_id_dict": "../vision_nn_flickr30k/data/flickr30k/word_to_id_content.pkl", 
     "model_dir": "models/train_visionspeech_cnn",
     "visionsig_threshold": None,  # if None, sigmoids are used as targets directly
