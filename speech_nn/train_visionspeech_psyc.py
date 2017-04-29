@@ -38,9 +38,9 @@ default_options_dict = {
     "speech_data_dir": "data/mfcc_cmvn_dd_vad", # "data/fbank_vad_tmp", # 
     # "speech_data_dir": "data/fbank_vad",
     "speech_label_dict": "data/captions_content_dict.pkl", 
-    # "visionsig_npz": "../vision_nn/models/train_bow_mlp/4bc0d1875f/sigmoid_output_dict.flickr8k.npz",  # 3000 classes
-    "visionsig_npz": "../vision_nn/models/train_bow_mlp/d64b725040/sigmoid_output_dict.flickr8k.npz",  # 1000 classes 
-    "word_to_id_dict": "../vision_nn/data/flickr30k/word_to_id_content.pkl", 
+    "visionsig_npz":
+        "../vision_nn_flickr30k/models/train_bow_mlp/4611301850/sigmoid_output_dict.flickr8k.npz",
+    "word_to_id_dict": "../vision_nn_flickr30k/data/flickr30k/word_to_id_content.pkl", 
     "model_dir": "models/train_visionspeech_psyc",
     "visionsig_threshold": None,  # if None, sigmoids are used as targets directly
     "n_padded": 800,

@@ -36,19 +36,18 @@ import data_io
 #-----------------------------------------------------------------------------#
 
 default_options_dict = {
-    "speech_data_dir": "data/mfcc_cmvn_dd_vad", # "data/fbank_vad_tmp", # 
-    # "speech_data_dir": "data/fbank_vad",
+    "speech_data_dir": "data/mfcc_cmvn_dd_vad", # "data/fbank_vad", # 
     "speech_label_dict": "data/captions_content_dict.pkl", 
-    # "visionsig_npz": "../vision_nn/models/train_bow_mlp/4bc0d1875f/sigmoid_output_dict.flickr8k.npz",  # 3000 classes
-    "visionsig_npz": "../vision_nn/models/train_bow_mlp/d64b725040/sigmoid_output_dict.flickr8k.npz",  # 1000 classes 
-    "word_to_id_dict": "../vision_nn/data/flickr30k/word_to_id_content.pkl", 
+    "visionsig_npz":
+        "../vision_nn_flickr30k/models/train_bow_mlp/4611301850/sigmoid_output_dict.flickr8k.npz",
+    "word_to_id_dict": "../vision_nn_flickr30k/data/flickr30k/word_to_id_content.pkl", 
     "model_dir": "models/train_visionspeech_cnn",
     "visionsig_threshold": None,  # if None, sigmoids are used as targets directly
     "n_most_common": 1000,  # needs to be less than the dimensionality of the
                             # vision sigmoids; if None, then the full vision
                             # dimensionality is used
-    "n_max_epochs": 15,
-    "batch_size": 64, # 128,
+    "n_max_epochs": 25,
+    "batch_size": 32, # 128,
     "ff_keep_prob": 1.0,
     "center_padded": True,
     # "optimizer": {

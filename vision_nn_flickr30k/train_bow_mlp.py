@@ -34,7 +34,7 @@ default_options_dict = {
     "data_dir": "data/flickr30k", # "data/temp", # 
     "label_dict": "captions_word_ids_content_dict.pkl", # "captions_word_ids_dict.pkl", # 
     "model_dir": "models/train_bow_mlp",
-    "n_max_epochs": 25,
+    "n_max_epochs": 50,
     "batch_size": 64,  # 64
     "ff_keep_prob": 0.75,
     "n_most_common": 1000,  # 3000
