@@ -39,7 +39,7 @@ default_options_dict = {
     "n_padded": 800,
     "n_most_common": 1000,
     "n_max_epochs": 25,
-    "batch_size": 128, # 30,
+    "batch_size": 16, # 128
     "ff_keep_prob": 1.0,
     "center_padded": True,
     # "optimizer": {

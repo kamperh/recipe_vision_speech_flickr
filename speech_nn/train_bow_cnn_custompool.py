@@ -46,7 +46,7 @@ default_options_dict = {
     "n_padded": 800,
     "n_most_common": 1000,
     "n_max_epochs": 25,
-    "batch_size": 128, # 30,
+    "batch_size": 16, # 128
     "ff_keep_prob": 1.0,
     "center_padded": False,
     # "optimizer": {
@@ -69,7 +69,7 @@ default_options_dict = {
         # [1, 3]
     ],
     "detect_sigmoid_threshold": 0.4,
-    "n_hiddens": [2048],
+    "n_hiddens": [4096],  # 2048
     "pooling": "mean",  # "mean", "max", "logsumexp"
     # "r": 100, # hyperparameter when logsumexp pooling is used above
     "rnd_seed": 42,
