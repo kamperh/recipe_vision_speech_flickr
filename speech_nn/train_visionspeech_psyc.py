@@ -38,8 +38,10 @@ default_options_dict = {
     "speech_data_dir": "data/mfcc_cmvn_dd_vad", # "data/fbank_vad_tmp", # 
     # "speech_data_dir": "data/fbank_vad",
     "speech_label_dict": "data/captions_content_dict.pkl", 
+    # "visionsig_npz":
+    #     "../vision_nn_flickr30k/models/train_bow_mlp/4611301850/sigmoid_output_dict.flickr8k.npz",
     "visionsig_npz":
-        "../vision_nn_flickr30k/models/train_bow_mlp/4611301850/sigmoid_output_dict.flickr8k.npz",
+        "../vision_nn_flickr30k/models/train_bow_mlp/dea2850778/sigmoid_output_dict.flickr8k.npz",
     "word_to_id_dict": "../vision_nn_flickr30k/data/flickr30k/word_to_id_content.pkl", 
     "model_dir": "models/train_visionspeech_psyc",
     "visionsig_threshold": None,  # if None, sigmoids are used as targets directly
@@ -47,8 +49,8 @@ default_options_dict = {
     "n_most_common": 1000,  # needs to be less than the dimensionality of the
                             # vision sigmoids; if None, then the full vision
                             # dimensionality is used
-    "n_max_epochs": 50,
-    "batch_size": 128, # 128,
+    "n_max_epochs": 25,
+    "batch_size": 64, # 128,
     "ff_keep_prob": 1.0,
     "center_padded": False,
     # "optimizer": {
@@ -60,19 +62,19 @@ default_options_dict = {
         "learning_rate": 0.001
     },
     "filter_shapes": [
-        [39, 9, 1, 64],
-        [1, 10, 64, 64],
-        [1, 10, 64, 64],
-        [1, 10, 64, 64],
-        [1, 10, 64, 64],
-        [1, 10, 64, 1000],
+        [39, 9, 1, 96],
+        [1, 10, 96, 96],
+        [1, 10, 96, 96],
+        [1, 10, 96, 96],
+        [1, 10, 96, 96],
+        [1, 10, 96, 1000],
         # [1, 10, 64, 256],
         # [1, 11, 256, 1000]
     ],
     "pool_shapes": [None]*6,
     "detect_sigmoid_threshold": 0.4,
     "pooling": "logsumexp",  # "avg", "max", "logsumexp"
-    "r": 1., # hyperparameter when logsumexp pooling is used above
+    "r": 1.,  # hyperparameter when logsumexp pooling is used above
     "rnd_seed": 1,
     }
 
@@ -260,6 +262,13 @@ def train_visionspeech_psyc(options_dict=None, config=None, model_dir=None, extr
 
     # TRAIN MODEL
 
+    # Save options_dict
+    options_dict["n_epochs_complete"] = n_epochs_post_complete
+    # options_dict_fn = path.join(model_dir, "options_dict.pkl")
+    print("Writing: " + options_dict_fn)
+    with open(options_dict_fn, "wb") as f:
+        pickle.dump(options_dict, f, -1)
+
     print(datetime.now())
     print "Training CNN"
     record_dict = training.train_fixed_epochs(
@@ -275,13 +284,6 @@ def train_visionspeech_psyc(options_dict=None, config=None, model_dir=None, extr
     print "Writing:", record_dict_fn
     with open(record_dict_fn, "wb") as f:
         pickle.dump(record_dict, f, -1)
-
-    # Save options_dict
-    options_dict["n_epochs_complete"] = n_epochs_post_complete
-    # options_dict_fn = path.join(model_dir, "options_dict.pkl")
-    print("Writing: " + options_dict_fn)
-    with open(options_dict_fn, "wb") as f:
-        pickle.dump(options_dict, f, -1)
 
     print datetime.now()
 
