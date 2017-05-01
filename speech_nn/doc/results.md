@@ -7,43 +7,43 @@ Oracle results
 
 ### OracleSpeechCNN, MFCC, max pooling
 
-Model directory: models/train_bow_cnn/9e191f0eca
-Options: {'ff_keep_prob': 1.0, 'optimizer': {'learning_rate': 0.0001, 'type': 'adam'}, 'n_most_common': 1000, 'script': 'train_bow_cnn', 'rnd_seed': 42, 'data_dir': 'data/mfcc_cmvn_dd_vad', 'batch_size': 128, 'center_padded': True, 'n_max_epochs': 25, 'model_dir': 'models/train_bow_cnn', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'pool_shapes': [[1, 3], [1, 3], [1, 75]], 'label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[39, 9, 1, 64], [1, 10, 64, 256], [1, 11, 256, 1024]], 'n_hiddens': [2048]}
+Model directory: models/train_bow_cnn/4f8af91591
+Options: {'ff_keep_prob': 1.0, 'optimizer': {'learning_rate': 0.0001, 'type': 'adam'}, 'n_most_common': 1000, 'script': 'train_bow_cnn', 'rnd_seed': 42, 'data_dir': 'data/mfcc_cmvn_dd_vad', 'batch_size': 16, 'center_padded': True, 'n_max_epochs': 25, 'model_dir': 'models/train_bow_cnn', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'pool_shapes': [[1, 3], [1, 3], [1, 75]], 'label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[39, 9, 1, 64], [1, 10, 64, 256], [1, 11, 256, 1024]], 'n_hiddens': [4096]}
 
 Results on dev:
 
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.40
-    No. predictions: 20908
+    No. predictions: 19168
     No. true tokens: 29808
-    Precision: 14639 / 20908 = 70.0163%
-    Recall: 14639 / 29808 = 49.1110%
-    F-score: 57.7293%
-    Average precision: 55.6694%
+    Precision: 14838 / 19168 = 77.4103%
+    Recall: 14838 / 29808 = 49.7786%
+    F-score: 60.5929%
+    Average precision: 58.5717%
     ---------------------------------------------------------------------------
 
 Results on test:
 
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.40
-    No. predictions: 21038
+    No. predictions: 19108
     No. true tokens: 29617
-    Precision: 14796 / 21038 = 70.3299%
-    Recall: 14796 / 29617 = 49.9578%
-    F-score: 58.4187%
-    Average precision: 56.3539%
+    Precision: 14969 / 19108 = 78.3389%
+    Recall: 14969 / 29617 = 50.5419%
+    F-score: 61.4428%
+    Average precision: 59.5470%
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.70
-    No. predictions: 15921
+    No. predictions: 14306
     No. true tokens: 29617
-    Precision: 13140 / 15921 = 82.5325%
-    Recall: 13140 / 29617 = 44.3664%
-    F-score: 57.7100%
-    Average precision: 56.3539%
+    Precision: 12883 / 14306 = 90.0531%
+    Recall: 12883 / 29617 = 43.4987%
+    F-score: 58.6617%
+    Average precision: 59.5470%
     ---------------------------------------------------------------------------
-    Average P@10: 0.9350
-    Average P@N: 0.7151
-    Average EER: 0.0798
+    Average P@10: 0.9200
+    Average P@N: 0.7238
+    Average EER: 0.062
     ---------------------------------------------------------------------------
 
 
@@ -56,217 +56,216 @@ Results on dev:
 
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.40
-    No. predictions: 14075
+    No. predictions: 18885
     No. true tokens: 29808
-    Precision: 9754 / 14075 = 69.3002%
-    Recall: 9754 / 29808 = 32.7228%
-    F-score: 44.4546%
-    Average precision: 41.2801%
+    Precision: 13234 / 18885 = 70.0768%
+    Recall: 13234 / 29808 = 44.3975%
+    F-score: 54.3569%
+    Average precision: 50.6143%
     ---------------------------------------------------------------------------
 
 
 ### OracleSpeechPSyC, MFCC, logsumexp pooling
 
-Model directory: models/train_psyc/94a0a7228e
-Options: {'pool_shapes': [None, None, None, None, None, None], 'n_most_common': 1000, 'rnd_seed': 42, 'batch_size': 128, 'optimizer': {'learning_rate': 0.001, 'type': 'adam'}, 'filter_shapes': [[39, 9, 1, 64], [1, 10, 64, 64], 1, 10, 64, 64], [1, 10, 64, 64], [1, 10, 64, 64], [1, 10, 64, 1000]], 'ff_keep_prob': 1.0, 'data_dir': 'data/mfcc_mvn_dd_vad', 'script': 'train_psyc', 'pooling': 'logsumexp', 'n_max_epochs': 25, 'r': 1.0, 'model_dir': models/train_psyc', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'center_padded': False, 'label_dict': 'data/captions_ontent_dict.pkl'}
+Model directory: models/train_psyc/246f3f7f69
+Options: {'pool_shapes': [None, None, None, None, None, None], 'n_most_common': 1000, 'rnd_seed': 42, 'batch_size': 64, 'optimizer': {'learning_rate': 0.001, 'type': 'adam'}, 'filter_shapes': [[39, 9, 1, 96], [1, 10, 96, 96], [1, 10, 96, 96], [1, 10, 96, 96], [1, 10, 96, 96], [1, 10, 96, 1000]], 'ff_keep_prob': 1.0, 'data_dir': 'data/mfcc_cmvn_dd_vad', 'script': 'train_psyc', 'pooling': 'logsumexp', 'n_max_epochs': 25, 'r': 1.0, 'model_dir': 'models/train_psyc', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'center_padded': False, 'label_dict': 'data/captions_content_dict.pkl'}
 
 Results on dev:
 
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.40
-    No. predictions: 23393
+    No. predictions: 23890
     No. true tokens: 29808
-    Precision: 17858 / 23393 = 76.3391%
-    Recall: 17858 / 29808 = 59.9101%
-    F-score: 67.1341%
-    Average precision: 67.4453%
+    Precision: 18407 / 23890 = 77.0490%
+    Recall: 18407 / 29808 = 61.7519%
+    F-score: 68.5575%
+    Average precision: 69.0995%
     ---------------------------------------------------------------------------
 
 Results on test:
 
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.40
-    No. predictions: 23776
+    No. predictions: 24217
     No. true tokens: 29617
-    Precision: 18136 / 23776 = 76.2786%
-    Recall: 18136 / 29617 = 61.2351%
-    F-score: 67.9340%
-    Average precision: 68.2631%
+    Precision: 18662 / 24217 = 77.0616%
+    Recall: 18662 / 29617 = 63.0111%
+    F-score: 69.3316%
+    Average precision: 69.7159%
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.70
-    No. predictions: 17637
+    No. predictions: 18308
     No. true tokens: 29617
-    Precision: 15346 / 17637 = 87.0103%
-    Recall: 15346 / 29617 = 51.8148%
-    F-score: 64.9511%
-    Average precision: 68.2631%
+    Precision: 16009 / 18308 = 87.4426%
+    Recall: 16009 / 29617 = 54.0534%
+    F-score: 66.8086%
+    Average precision: 69.7159%
     ---------------------------------------------------------------------------
-    Average P@10: 0.9600
-    Average P@N: 0.8081
-    Average EER: 0.0484
+    Average P@10: 0.9650
+    Average P@N: 0.8303
+    Average EER: 0.0413
     ---------------------------------------------------------------------------
 
 
 
 
-Speech from vision results
---------------------------
+Visually grounded speech network results
+----------------------------------------
 
 ### VisionSpeechCNN, MFCC, max pooling
 
-Model directory: models/train_visionsig_cnn/5bb5c4b4bd
-Options: {'optimizer': {'learning_rate': 0.0001, 'type': 'adam'}, 'n_hiddens': [2048], 'rnd_seed': 42, 'batch_size': 128, 'vissionsig_threshold': None, 'speech_data_dir': 'data/mfcc_cmvn_dd_vad', 'pool_shapes': [[1, 3], [1, 3], [1, 75]], 'speech_label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[39, 9, 1, 64], [1, 10, 64, 256], [1, 11, 256, 1024]], 'n_most_common': 1000, 'ff_keep_prob': 1.0, 'script': 'train_visionsig_cnn', 'word_to_d_dict': '../vision_nn/data/flickr30k/word_to_id_content.pkl', 'n_max_epochs': 25, 'model_dir': 'models/train_visionsig_nn', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'center_padded': True, 'visionsig_npz': '../vision_nn/models/trainbow_mlp/d64b725040/sigmoid_output_dict.flickr8k.npz'}
+Model directory: models/train_visionspeech_cnn/989f00f30a
+Options: {'optimizer': {'learning_rate': 0.0001, 'type': 'adam'}, 'n_hiddens': [4096], 'rnd_seed': 42, 'batch_size': 16, 'speech_data_dir': 'data/mfcc_cmvn_dd_vad', 'pool_shapes': [[1, 3], [1, 3], [1, 75]], 'speech_label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[39, 9, 1, 64], [1, 10, 64, 256], [1, 11, 256, 1024]], 'n_most_common': 1000, 'ff_keep_prob': 1.0, 'script': 'train_visionspeech_cnn', 'visionsig_threshold': None, 'word_to_id_dict': '../vision_nn_flickr30k/data/flickr30k/word_to_id_content.pkl', 'n_max_epochs': 15, 'model_dir': 'models/train_visionspeech_cnn', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'center_padded': True, 'visionsig_npz': '../vision_nn_flickr30k/models/train_bow_mlp/dea2850778/sigmoid_output_dict.flickr8k.npz'}
 
 Results on dev:
 
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.40
-    No. predictions: 18765
+    No. predictions: 20137
     No. true tokens: 29808
-    Precision: 7023 / 18765 = 37.4261%
-    Recall: 7023 / 29808 = 23.5608%
-    F-score: 28.9173%
-    Average precision: 21.6058%
+    Precision: 7059 / 20137 = 35.0549%
+    Recall: 7059 / 29808 = 23.6816%
+    F-score: 28.2671%
+    Average precision: 20.5216%
     ---------------------------------------------------------------------------
 
 Results on test:
 
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.40
-    No. predictions: 19446
+    No. predictions: 20751
     No. true tokens: 29617
-    Precision: 7236 / 19446 = 37.2107%
-    Recall: 7236 / 29617 = 24.4319%
-    F-score: 29.4968%
-    Average precision: 21.7135%
+    Precision: 7138 / 20751 = 34.3983%
+    Recall: 7138 / 29617 = 24.1010%
+    F-score: 28.3434%
+    Average precision: 20.0420%
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.70
-    No. predictions: 4456
+    No. predictions: 4211
     No. true tokens: 29617
-    Precision: 2733 / 4456 = 61.3330%
-    Recall: 2733 / 29617 = 9.2278%
-    F-score: 16.0420%
-    Average precision: 21.7135%
+    Precision: 2648 / 4211 = 62.8829%
+    Recall: 2648 / 29617 = 8.9408%
+    F-score: 15.6557%
+    Average precision: 20.0420%
     ---------------------------------------------------------------------------
-    Average P@10: 0.5350
-    Average P@N: 0.3221
-    Average EER: 0.2275
+    Average P@10: 0.5450
+    Average P@N: 0.3312
+    Average EER: 0.2233
     ---------------------------------------------------------------------------
 
 
 ### VisionSpeechCNN, filterbanks, max pooling
 
-Model directory: models/train_visionsig_cnn/65f9e0c68e
-Options: {'optimizer': {'learning_rate': 0.0001, 'type': 'adam'}, 'n_hiddens': [2048], 'rnd_seed': 42, 'batch_ize': 128, 'vissionsig_threshold': None, 'speech_data_dir': 'data/fbank_vad', 'pool_shapes': [[1, 3], [1, 3], [1, 75], 'speech_label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[40, 9, 1, 64], [1, 10, 64, 256], [1, 1, 256, 1024]], 'n_most_common': 1000, 'ff_keep_prob': 1.0, 'script': 'train_visionsig_cnn', 'word_to_id_dict': '..vision_nn/data/flickr30k/word_to_id_content.pkl', 'n_max_epochs': 25, 'model_dir': 'models/train_visionsig_cnn', n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'center_padded': True, 'visionsig_npz': '../vision_nn/models/train_ow_mlp/d64b725040/sigmoid_output_dict.flickr8k.npz'}
+Model directory: models/train_visionspeech_cnn/ae93b4d568
+Options: {'optimizer': {'learning_rate': 0.0001, 'type': 'adam'}, 'n_hiddens': [4096], 'rnd_seed': 42, 'batch_size': 16, 'speech_data_dir': 'data/fbank_vad', 'pool_shapes': [[1, 3], [1, 3], [1, 75]], 'speech_label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[40, 9, 1, 64], [1, 10, 64, 256], [1, 11, 256, 1024]], 'n_most_common': 1000, 'ff_keep_prob': 1.0, 'script': 'train_visionspeech_cnn', 'visionsig_threshold': None, 'word_to_id_dict': '../vision_nn_flickr30k/data/flickr30k/word_to_id_content.pkl', 'n_max_epochs': 15, 'model_dir': 'models/train_visionspeech_cnn', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'center_padded': True, 'visionsig_npz': '../vision_nn_flickr30k/models/train_bow_mlp/dea2850778/sigmoid_output_dict.flickr8k.npz'}
 
 Results on dev:
 
     -------------------------------------------------------------------------------
     Sigmoid threshold: 0.40
-    No. predictions: 16983
+    No. predictions: 18331
     No. true tokens: 29808
-    Precision: 6235 / 16983 = 36.7132%
-    Recall: 6235 / 29808 = 20.9172%
-    F-score: 26.6504%
-    Average precision: 19.9837%
+    Precision: 6393 / 18331 = 34.8753%
+    Recall: 6393 / 29808 = 21.4473%
+    F-score: 26.5606%
+    Average precision: 19.1246%
     -------------------------------------------------------------------------------
 
 
 ### VisionSpeechCNN, MFCC, mean pooling
 
-Model directory: models/train_visionsig_cnn_custompool/270a5fd1b0
-Options: {'optimizer': {'learning_rate': 0.0001, 'type': 'adam'}, 'n_hiddens': [2048], 'rnd_seed': 42, 'batch_ize': 128, 'vissionsig_threshold': None, 'speech_data_dir': 'data/mfcc_cmvn_dd_vad', 'pool_shapes': [[1, 3], [1, 3] None], 'speech_label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[39, 9, 1, 64], [1, 10, 64, 256], [, 11, 256, 1024]], 'n_most_common': 1000, 'ff_keep_prob': 1.0, 'script': 'train_visionsig_cnn_custompool', 'word_to_d_dict': '../vision_nn/data/flickr30k/word_to_id_content.pkl', 'pooling': 'mean', 'n_max_epochs': 25, 'model_dir': models/train_visionsig_cnn_custompool', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'center_padded': False, visionsig_npz': '../vision_nn/models/train_bow_mlp/d64b725040/sigmoid_output_dict.flickr8k.npz'}
+Model directory: models/train_visionspeech_cnn_custompool/71474cab0e
+Options:  {'optimizer': {'learning_rate': 0.0001, 'type': 'adam'}, 'n_hiddens': [4096], 'rnd_seed': 42, 'batch_size': 16, 'speech_data_dir': 'data/mfcc_cmvn_dd_vad', 'pool_shapes': [[1, 3], [1, 3], None], 'speech_label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[39, 9, 1, 64], [1, 10, 64, 256], [1, 11, 256, 1024]], 'n_most_common': 1000, 'ff_keep_prob': 1.0, 'script': 'train_visionspeech_cnn_custompool', 'visionsig_threshold': None, 'word_to_id_dict': '../vision_nn_flickr30k/data/flickr30k/word_to_id_content.pkl', 'pooling': 'mean', 'n_max_epochs': 25, 'model_dir': 'models/train_visionspeech_cnn_custompool', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'center_padded': False, 'visionsig_npz': '../vision_nn_flickr30k/models/train_bow_mlp/dea2850778/sigmoid_output_dict.flickr8k.npz'}
 
 Results on dev:
 
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.40
-    No. predictions: 12983
+    No. predictions: 16573
     No. true tokens: 29808
-    Precision: 4708 / 12983 = 36.2628%
-    Recall: 4708 / 29808 = 15.7944%
-    F-score: 22.0046%
-    Average precision: 16.3493%
+    Precision: 5649 / 16573 = 34.0856%
+    Recall: 5649 / 29808 = 18.9513%
+    F-score: 24.3591%
+    Average precision: 17.3742%
     ---------------------------------------------------------------------------
 
 
 ### VisionSpeechCNN, filterbanks, mean pooling
 
-Model directory: models/train_visionsig_cnn_custompool/4617be96f5
-Options: {'optimizer': {'learning_rate': 0.0001, 'type': 'adam'}, 'n_hiddens': [2048], 'rnd_seed': 42, 'batch_ize': 128, 'vissionsig_threshold': None, 'speech_data_dir': 'data/fbank_vad', 'pool_shapes': [[1, 3], [1, 3], None] 'speech_label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[40, 9, 1, 64], [1, 10, 64, 256], [1, 11, 56, 1024]], 'n_most_common': 1000, 'ff_keep_prob': 1.0, 'script': 'train_visionsig_cnn_custompool', 'word_to_id_ict': '../vision_nn/data/flickr30k/word_to_id_content.pkl', 'pooling': 'mean', 'n_max_epochs': 25, 'model_dir': models/train_visionsig_cnn_custompool', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'center_padded': False, visionsig_npz': '../vision_nn/models/train_bow_mlp/d64b725040/sigmoid_output_dict.flickr8k.npz'}
+Model directory: models/train_visionsig_cnn_custompool/c3a4fcfba3
+Options: {'optimizer': {'learning_rate': 0.0001, 'type': 'adam'}, 'n_hiddens': [4096], 'rnd_seed': 42, 'batch_size': 16, 'speech_data_dir': 'data/fbank_vad', 'pool_shapes': [[1, 3], [1, 3], None], 'speech_label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[40, 9, 1, 64], [1, 10, 64, 256], [1, 11, 256, 1024]], 'n_most_common': 1000, 'ff_keep_prob': 1.0, 'script': 'train_visionspeech_cnn_custompool', 'visionsig_threshold': None, 'word_to_id_dict': '../vision_nn_flickr30k/data/flickr30k/word_to_id_content.pkl', 'pooling': 'mean', 'n_max_epochs': 25, 'model_dir': 'models/train_visionspeech_cnn_custompool', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'center_padded': False, 'visionsig_npz': '../vision_nn_flickr30k/models/train_bow_mlp/dea2850778/sigmoid_output_dict.flickr8k.npz'}
 
 Results on dev:
 
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.40
-    No. predictions: 10750
+    No. predictions: 17260
     No. true tokens: 29808
-    Precision: 3977 / 10750 = 36.9953%
-    Recall: 3977 / 29808 = 13.3421%
-    F-score: 19.6114%
-    Average precision: 15.2995%
+    Precision: 5534 / 17260 = 32.0626%
+    Recall: 5534 / 29808 = 18.5655%
+    F-score: 23.5149%
+    Average precision: 16.3565%
     ---------------------------------------------------------------------------
 
 
 ### VissionSpeechPSyC, MFCC, logsumexp pooling
 
-Model directory: models/train_visionsig_psyc/4073c4072c
-Options: {'optimizer': {'learning_rate': 0.001, 'type': 'adam'}, 'n_most_common': 1000, 'rnd_seed': 1, batch_size': 128, 'vissionsig_threshold': None, 'speech_data_dir': 'data/mfcc_cmvn_dd_vad', 'pool_shapes': [None, None, one, None, None, None], 'speech_label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[39, 9, 1, 64], [1, 0, 64, 64], [1, 10, 64, 64], [1, 10, 64, 64], [1, 10, 64, 64], [1, 10, 64, 1000]], 'ff_keep_prob': 1.0, 'script': train_visionsig_psyc', 'word_to_id_dict': '../vision_nn/data/flickr30k/word_to_id_content.pkl', 'pooling': 'logsumexp', n_max_epochs': 50, 'r': 1.0, 'model_dir': 'models/train_visionsig_psyc', 'n_padded': 800, 'detect_sigmoid_hreshold': 0.4, 'center_padded': False, 'visionsig_npz': '../vision_nn/models/train_bow_mlp/d64b725040/sigmoid_output_dict.lickr8k.npz'}
+Model directory: models/train_visionsig_psyc/d5cb9be08b
+Options: {'optimizer': {'learning_rate': 0.001, 'type': 'adam'}, 'n_most_common': 1000, 'rnd_seed': 1, 'batch_size': 64, 'speech_data_dir': 'data/mfcc_cmvn_dd_vad', 'pool_shapes': [None, None, None, None, None, None], 'speech_label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[39, 9, 1, 96], [1, 10, 96, 96], [1, 10, 96, 96], [1, 10, 96, 96], [1, 10, 96, 96], [1, 10, 96, 1000]], 'ff_keep_prob': 1.0, 'script': 'train_visionspeech_psyc', 'visionsig_threshold': None, 'word_to_id_dict': '../vision_nn_flickr30k/data/flickr30k/word_to_id_content.pkl', 'pooling': 'logsumexp', 'n_max_epochs': 25, 'r': 1.0, 'model_dir': 'models/train_visionspeech_psyc', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'center_padded': False, 'visionsig_npz': '../vision_nn_flickr30k/models/train_bow_mlp/dea2850778/sigmoid_output_dict.flickr8k.npz'}
 
 Results on dev:
 
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.40
-    No. predictions: 19231
+    No. predictions: 14401
     No. true tokens: 29808
-    Precision: 6827 / 19231 = 35.5000%
-    Recall: 6827 / 29808 = 22.9032%
-    F-score: 27.8431%
-    Average precision: 19.2118%
+    Precision: 5970 / 14401 = 41.4555%
+    Recall: 5970 / 29808 = 20.0282%
+    F-score: 27.0081%
+    Average precision: 19.3197%
     ---------------------------------------------------------------------------
 
 Results on test:
 
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.40
-    No. predictions: 19477
+    No. predictions: 14900
     No. true tokens: 29617
-    Precision: 6864 / 19477 = 35.2416%
-    Recall: 6864 / 29617 = 23.1759%
-    F-score: 27.9627%
-    Average precision: 18.9869%
+    Precision: 5977 / 14900 = 40.1141%
+    Recall: 5977 / 29617 = 20.1810%
+    F-score: 26.8527%
+    Average precision: 18.9217%
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.70
-    No. predictions: 4019
+    No. predictions: 3135
     No. true tokens: 29617
-    Precision: 2262 / 4019 = 56.2827%
-    Recall: 2262 / 29617 = 7.6375%
-    F-score: 13.4499%
-    Average precision: 18.9869%
+    Precision: 1973 / 3135 = 62.9346%
+    Recall: 1973 / 29617 = 6.6617%
+    F-score: 12.0481%
+    Average precision: 18.9217%
     ---------------------------------------------------------------------------
-    Average P@10: 0.4800
-    Average P@N: 0.3225
-    Average EER: 0.2292
+    Average P@10: 0.4850
+    Average P@N: 0.3185
+    Average EER: 0.2294
     ---------------------------------------------------------------------------
 
 
 ### VissionSpeechPSyC, filterbanks, logsumexp pooling
 
-Model directory: models/train_visionsig_psyc/7f29164a94
-Options: {'optimizer': {'learning_rate': 0.001, 'type': 'adam'}, 'n_most_common': 1000, 'rnd_seed': 1, 'batch_size': 128, 'vissionsig_threshold': None, 'speech_data_dir': 'data/fbank_vad', 'pool_shapes': [None, None, None, one, None, None], 'speech_label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[40, 9, 1, 64], [1, 10, 64, 4], [1, 10, 64, 64], [1, 10, 64, 64], [1, 10, 64, 64], [1, 10, 64, 1000]], 'ff_keep_prob': 1.0, 'script': 'train_isionsig_psyc', 'word_to_id_dict': '../vision_nn/data/flickr30k/word_to_id_content.pkl', 'pooling': 'logsumexp', 'n_ax_epochs': 50, 'r': 1.0, 'model_dir': 'models/train_visionsig_psyc', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, center_padded': False, 'visionsig_npz': '../vision_nn/models/train_bow_mlp/d64b725040/sigmoid_output_dict.flickr8k.npz'}
+Model directory: models/train_visionspeech_psyc/da11f57155
 
+Options: {'optimizer': {'learning_rate': 0.001, 'type': 'adam'}, 'n_most_common': 1000, 'rnd_seed': 1, 'batch_size': 64, 'speech_data_dir': 'data/fbank_vad', 'pool_shapes': [None, None, None, None, None, None], 'speech_label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[40, 9, 1, 96], [1, 10, 96, 96], [1, 10, 96, 96], [1, 10, 96, 96], [1, 10, 96, 96], [1, 10, 96, 1000]], 'ff_keep_prob': 1.0, 'script': 'train_visionspeech_psyc', 'visionsig_threshold': None, 'word_to_id_dict': '../vision_nn_flickr30k/data/flickr30k/word_to_id_content.pkl', 'pooling': 'logsumexp', 'n_max_epochs': 25, 'r': 1.0, 'model_dir': 'models/train_visionspeech_psyc', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'center_padded': False, 'visionsig_npz': '../vision_nn_flickr30k/models/train_bow_mlp/dea2850778/sigmoid_output_dict.flickr8k.npz'}
 Results on dev:
 
     ---------------------------------------------------------------------------
     Sigmoid threshold: 0.40
-    No. predictions: 16983
+    No. predictions: 14586
     No. true tokens: 29808
-    Precision: 6235 / 16983 = 36.7132%
-    Recall: 6235 / 29808 = 20.9172%
-    F-score: 26.6504%
-    Average precision: 19.9837%
+    Precision: 5826 / 14586 = 39.9424%
+    Recall: 5826 / 29808 = 19.5451%
+    F-score: 26.2468%
+    Average precision: 18.1734%
     ---------------------------------------------------------------------------
-
 
 
 
@@ -320,5 +319,3 @@ Results on test:
     Average P@N: 0.0348
     Average EER: 0.5000
     ---------------------------------------------------------------------------
-
-

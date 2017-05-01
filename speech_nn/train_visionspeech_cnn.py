@@ -36,7 +36,8 @@ import data_io
 #-----------------------------------------------------------------------------#
 
 default_options_dict = {
-    "speech_data_dir": "data/mfcc_cmvn_dd_vad", # "data/fbank_vad", # 
+    "speech_data_dir": "data/mfcc_cmvn_dd_vad",
+    # "speech_data_dir": "data/fbank_vad",
     "speech_label_dict": "data/captions_content_dict.pkl", 
     "visionsig_npz":
         "../vision_nn_flickr30k/models/train_bow_mlp/dea2850778/sigmoid_output_dict.flickr8k.npz",
