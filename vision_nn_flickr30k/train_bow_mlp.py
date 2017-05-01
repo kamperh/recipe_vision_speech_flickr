@@ -38,7 +38,7 @@ default_options_dict = {
     "batch_size": 64,
     "ff_keep_prob": 0.75,
     "n_most_common": 1000,
-    "n_hiddens": [3000, 3000, 3000, 3000],  # [3072, 3072, 3072, 3072],
+    "n_hiddens": [3072, 3072, 3072, 3072],
     # "optimizer": {
     #     "type": "sgd",
     #     "learning_rate": 0.001
