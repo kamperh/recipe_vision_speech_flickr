@@ -58,8 +58,8 @@ Extract filterbank and MFCC features by running the steps in
 Neural network training
 -----------------------
 Train the multi-label visual classifier by running the steps in
-[vision_nn/readme.md](vision_nn_flickr30k/readme.md). Note the final model
-directory.
+[vision_nn_flickr30k/readme.md](vision_nn_flickr30k/readme.md). Note the final
+model directory.
 
 Train the various visually grounded speech models by running the steps in
 [speech_nn/readme.md](speech_nn/readme.md).
