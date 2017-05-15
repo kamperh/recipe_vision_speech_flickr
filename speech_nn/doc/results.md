@@ -192,7 +192,7 @@ Results on dev:
 
 ### VisionSpeechCNN, filterbanks, mean pooling
 
-Model directory: models/train_visionsig_cnn_custompool/c3a4fcfba3
+Model directory: models/train_visionspeech_cnn_custompool/c3a4fcfba3
 Options: {'optimizer': {'learning_rate': 0.0001, 'type': 'adam'}, 'n_hiddens': [4096], 'rnd_seed': 42, 'batch_size': 16, 'speech_data_dir': 'data/fbank_vad', 'pool_shapes': [[1, 3], [1, 3], None], 'speech_label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[40, 9, 1, 64], [1, 10, 64, 256], [1, 11, 256, 1024]], 'n_most_common': 1000, 'ff_keep_prob': 1.0, 'script': 'train_visionspeech_cnn_custompool', 'visionsig_threshold': None, 'word_to_id_dict': '../vision_nn_flickr30k/data/flickr30k/word_to_id_content.pkl', 'pooling': 'mean', 'n_max_epochs': 25, 'model_dir': 'models/train_visionspeech_cnn_custompool', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'center_padded': False, 'visionsig_npz': '../vision_nn_flickr30k/models/train_bow_mlp/dea2850778/sigmoid_output_dict.flickr8k.npz'}
 
 Results on dev:
@@ -210,7 +210,7 @@ Results on dev:
 
 ### VissionSpeechPSyC, MFCC, logsumexp pooling
 
-Model directory: models/train_visionsig_psyc/d5cb9be08b
+Model directory: models/train_visionspeech_psyc/d5cb9be08b
 Options: {'optimizer': {'learning_rate': 0.001, 'type': 'adam'}, 'n_most_common': 1000, 'rnd_seed': 1, 'batch_size': 64, 'speech_data_dir': 'data/mfcc_cmvn_dd_vad', 'pool_shapes': [None, None, None, None, None, None], 'speech_label_dict': 'data/captions_content_dict.pkl', 'filter_shapes': [[39, 9, 1, 96], [1, 10, 96, 96], [1, 10, 96, 96], [1, 10, 96, 96], [1, 10, 96, 96], [1, 10, 96, 1000]], 'ff_keep_prob': 1.0, 'script': 'train_visionspeech_psyc', 'visionsig_threshold': None, 'word_to_id_dict': '../vision_nn_flickr30k/data/flickr30k/word_to_id_content.pkl', 'pooling': 'logsumexp', 'n_max_epochs': 25, 'r': 1.0, 'model_dir': 'models/train_visionspeech_psyc', 'n_padded': 800, 'detect_sigmoid_threshold': 0.4, 'center_padded': False, 'visionsig_npz': '../vision_nn_flickr30k/models/train_bow_mlp/dea2850778/sigmoid_output_dict.flickr8k.npz'}
 
 Results on dev:

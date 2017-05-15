@@ -137,6 +137,14 @@ On the test set, this model achieves the following scores, as in Table 1 of
     F-score: 28.3434%
     Average precision: 20.0420%
 
+Running `eval_precision_recall.py` with the `--analyze` argument also provides
+the output of the system, which was used to produce Table 2 in
+[Kamper et al., 2017](https://arxiv.org/abs/1703.08136). A figure similar to
+Figure 3 can be produced by running:
+
+    ./eval_precision_recall.py --plot --analyze_confusions \
+        --sigmoid_threshold 0.7 models/train_visionspeech_cnn/989f00f30a test
+
 
 Visually grounded spoken bag-of-words CNN with mean pool over output
 --------------------------------------------------------------------

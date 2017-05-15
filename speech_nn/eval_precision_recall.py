@@ -197,6 +197,16 @@ def analyze_confusions(prediction_dict, true_dict, show_plot=False):
                     x, y, label, horizontalalignment="center", verticalalignment="center", rotation=45
                     )
 
+        # Axes and grid
+        ax.spines["bottom"].set_color("white")
+        ax.spines["top"].set_color("white") 
+        ax.spines["right"].set_color("white")
+        ax.spines["left"].set_color("white")
+        ax.set_xticks(np.arange(-0.5, n_confusions, 1), minor=True)
+        ax.set_yticks(np.arange(-0.5, n_words, 1), minor=True)
+        ax.tick_params(colors="white", which="minor")
+        ax.grid(which="minor", color="w", linestyle="-", linewidth=1.5)
+
 
 #-----------------------------------------------------------------------------#
 #                                MAIN FUNCTION                                #
