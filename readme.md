@@ -7,8 +7,8 @@ This is a recipe for grounding untranscribed speech using paired images.
 Details are given in [Kamper et al., 2017](https://arxiv.org/abs/1703.08136):
 
 - H. Kamper, S. Settle, G. Shakhnarovich, and K. Livescu, "Visually grounded
-  learning of keyword prediction from untranscribed speech," *arXiv preprint
-  arXiv:1703.08136*, 2017.
+  learning of keyword prediction from untranscribed speech," *Proc.
+  Interspeech*, 2017.
 
 Please cite this paper if you use this code.
 
