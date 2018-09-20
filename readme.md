@@ -1,6 +1,12 @@
 Multimodal Modelling of Flickr Vision and Speech Data
 =====================================================
 
+Update
+------
+A more recent version of this recipe accompanying a new paper is available
+(here)[https://github.com/kamperh/recipe_semantic_flickraudio].
+
+
 Overview
 --------
 This is a recipe for grounding untranscribed speech using paired images.
